@@ -12,11 +12,6 @@ public class RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
-    public Role saveRole(){
-        Role role= new Role();
-        role.setName("ROLE_USER");
-        return roleRepository.save(role);
-    }
 
 
 }
