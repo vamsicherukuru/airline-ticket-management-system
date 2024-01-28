@@ -38,57 +38,32 @@
 
     <div class="col">
         <div class="container">
-            <form th:action="@{/save/user}" id="userForm" method="post">
 
+            <div id="successMessage"  class="alert alert-success" style="display: none;">
+               <center>
+                   Congratulations!! Account Created Successfully.
+                   <br>
+                   Please Login<br>
+                   <a th:href="@{/login}" class="btn btn-success">Take me to Login page</a>
+               </center>
+            </div>
+            <div id="errorMessage"   class="alert alert-warning" style="display: none; color: red;">
+                Something went wrong. Please try again.
+            </div>
+            <form id="registrationForm" method="POST" th:action="@{/save/user}">
 
-                <div th:if="${param.error}" class="alert alert-warning">
-                    Something Went Wrong
-                </div>
-
-
-                <h4>Personal Details</h4>
+                <h4>ATMS Signup..</h4>
                 <hr>
-                <div class="row">
-                    <div class="col">
-                        <label  class="form-label">Full Name</label>
-                        <input type="text" name="fullname" class="form-control">
-                    </div>
-                    <div class="col">
-                        <label  class="form-label">Age</label>
-                        <input type="number" min="13" max="99" name="age" class="form-control">
-                    </div>
+                <div class="mb-3">
+                    <label  class="form-label">First Name</label>
+                    <input type="text" name="first_name" class="form-control">
+
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <label  class="form-label">Address Line 1</label>
-                        <input type="text" name="address" class="form-control">
-                    </div>
-                    <div class="col">
-                        <label  class="form-label">Apt No</label>
-                        <input type="text"  name="apt_no" class="form-control">
-                    </div>
-                    <div class="col">
-                        <label  class="form-label">City</label>
-                        <input type="text"  name="city" class="form-control">
-                    </div>
+                <div class="mb-3">
+                    <label  class="form-label">Last Name</label>
+                    <input type="text" name="last_name" class="form-control">
+
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <label  class="form-label">State/Province</label>
-                        <input type="text"  name="state" class="form-control">
-                    </div>
-                    <div class="col">
-                        <label  class="form-label">Country</label>
-                        <input type="text"  name="country" class="form-control">
-                    </div>
-                    <div class="col">
-                        <label  class="form-label">Zipcode</label>
-                        <input type="text"  name="zipcode" maxlength="5" minlength="5" class="form-control">
-                    </div>
-                </div>
-                <br>
-                <h4>Login Details</h4>
-                <hr>
                 <div class="mb-3">
                     <label  class="form-label">Email</label>
                     <input type="text" name="email" class="form-control">
@@ -100,38 +75,47 @@
 
                 </div>
 
-                <button type="button" onclick="submitForm()" class="btn btn-primary btn-lg">Register Me</button>
+                <button type="submit"  class="btn btn-primary btn-lg">Register Me</button>
+
+
+
             </form>
-
             <script>
-    function submitForm() {
-        // Get values of email and password fields
-        var email = document.getElementsByName("email")[0].value;
-        var password = document.getElementsByName("password")[0].value;
+    $(document).ready(function () {
+        $("#registrationForm").submit(function (e) {
+            e.preventDefault(); // Prevent the default form submission behavior
 
-        // Create a new FormData object and append email and password
-        var formData = new FormData();
-        formData.append("email", email);
-        formData.append("password", password);
+            // Serialize form data
+            var formData = $(this).serialize();
 
-        // Use fetch API to send a POST request
-        fetch('/save/user', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-            // Handle success as needed
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-            // Handle error as needed
+            // Make an AJAX request to submit the form data
+            $.ajax({
+                type: "POST",
+                url: $(this).attr("action"),
+                data: formData,
+                success: function () {
+                    // Handle the success response here
+                    // For example, you can show a success message or toggle a div
+                    $("#successMessage").show();
+                    $("#errorMessage").hide(); // Hide the error message if it was previously shown
+
+                    // Clear the form fields
+                    $("#registrationForm").hide();
+                },
+                error: function () {
+                    // Handle the error response here
+                    // For example, you can show an error message
+                    $("#successMessage").hide(); // Hide the success message if it was previously shown
+                    $("#errorMessage").show().text("Something went wrong. Please try again.");
+                }
+            });
         });
-    }
+    });
 </script>
+
         </div>
     </div>
+
 
 </div>
 

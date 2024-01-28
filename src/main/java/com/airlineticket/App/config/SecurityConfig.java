@@ -38,6 +38,7 @@ public class SecurityConfig {
                 .formLogin(login->
                         login.loginPage("/login")
                 )
+                .logout(logout->logout.permitAll())
                 .httpBasic(Customizer.withDefaults())
                 .userDetailsService(userService)
                 .build();

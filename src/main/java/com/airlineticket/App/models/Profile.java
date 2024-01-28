@@ -18,14 +18,28 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String fullName;
+    @Column(name = "")
     private Integer age;
+
+    @Column(name = "")
     private String address;
+
+    @Column(name = "")
     private String aptNo;
+
+    @Column(name = "")
     private String city;
+
+    @Column(name = "")
     private String state;
+
+    @Column(name = "")
     private String country;
+
+    @Column(name = "")
     private String zipcode;
+
+    @Column(name = "user_email")
     private String user_email;
     @OneToOne
     @JoinColumn(name = "user_id", unique = true)
