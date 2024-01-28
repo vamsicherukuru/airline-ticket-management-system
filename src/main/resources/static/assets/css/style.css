@@ -3,9 +3,52 @@
     margin-top:50px;
 }
 
+.loginForm{
+    margin-top:50px;
+    width: fit-content;
+    border: 1px solid silver;
+    padding: 15px;
+    border-radius:10px;
+    background-color:white;
+    color:black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 
-body{
+}
+.loginForm input{
+
+    width: 350px;
+    transition: transform 0.3s ease;
+
+
+}
+
+/* Scale up the input when it's focused */
+.loginForm input:focus {
+  transform: scale(1.1); /* Adjust the scale factor as needed */
+}
 
 
 
+.registerForm{
+
+    width: fit-content;
+    border: 1px solid silver;
+    padding: 25px;
+    border-radius:10px;
+    background-color:white;
+    color:black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+}
+.registerForm input{
+
+    width: 450px;
+    transition: transform 0.3s ease;
+
+
+}
+
+/* Scale up the input when it's focused */
+.registerForm input:focus {
+  transform: scale(1.1); /* Adjust the scale factor as needed */
 }
