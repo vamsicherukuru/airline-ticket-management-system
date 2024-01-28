@@ -31,15 +31,15 @@ public class SecurityConfig {
                 .csrf(csrf->csrf.disable())
                 .authorizeHttpRequests(auth-> auth
                                 .requestMatchers(WHITE_LIST_ENDPOINTS).permitAll()
+                                .requestMatchers("/admin").hasAnyAuthority("ADMIN")
+                                .requestMatchers("/profile").hasAnyAuthority("USER")
                                 .anyRequest().authenticated()
                         )
                 .formLogin(login->
                         login.loginPage("/login")
-
                 )
                 .httpBasic(Customizer.withDefaults())
                 .userDetailsService(userService)
-
                 .build();
     }
 

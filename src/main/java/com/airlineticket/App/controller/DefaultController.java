@@ -13,5 +13,16 @@ public class DefaultController {
 
         return "home";
     }
+    @GetMapping("/profile")
+    public String profilePage(){
+
+        return "home";
+    }
+
+    @GetMapping("/admin")
+    public String adminPage(){
+
+        return "home";
+    }
 
 }

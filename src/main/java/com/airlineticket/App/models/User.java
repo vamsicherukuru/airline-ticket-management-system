@@ -34,12 +34,13 @@ public class User implements UserDetails {
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "spring_security_user_role_list",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
     List<Role> roleList;
 
-    // One-to-One relationship with Profile
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profile_id", referencedColumnName = "id")
-    private Profile profile;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
