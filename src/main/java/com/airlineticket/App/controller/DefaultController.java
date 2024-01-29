@@ -16,7 +16,7 @@ public class DefaultController {
     @GetMapping("/profile")
     public String profilePage(){
 
-        return "home";
+        return "user/profile-page";
     }
 
     @GetMapping("/admin")
