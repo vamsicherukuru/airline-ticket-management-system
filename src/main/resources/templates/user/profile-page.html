@@ -82,34 +82,81 @@
             </div>
         </div>
         <div class="col py-3">
-            Content area...
 
 
             <div class="container">
+                <br>
+                <h4>
+                    <i class="fs-4 bi-person-circle"></i>
+                    My Information</h4>
+                <hr>
+                <div>
+                    <form>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label  class="form-label">First Name</label>
+                                <input type="text" name="first_name" th:value="${userDetails.first_name}"  class="form-control" required disabled>
 
-                <form>
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label  class="form-label">First Name</label>
-                            <input type="text" name="first_name" th:value="${userDetails.first_name}"  class="form-control" required disabled>
+                            </div>
+                            <div class="col mb-3">
+                                <label  class="form-label">Last Name</label>
+                                <input type="text" name="last_name" th:value="${userDetails.last_name}"  class="form-control" required disabled>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label  class="form-label">Email</label>
+                                <input type="text" name="email" th:value="${userDetails.email}"  class="form-control" required disabled>
+
+                            </div>
 
                         </div>
-                        <div class="col mb-3">
-                            <label  class="form-label">Last Name</label>
-                            <input type="text" name="last_name" th:value="${userDetails.last_name}"  class="form-control" required disabled>
+                    </form>
+                </div>
+
+
+
+
+
+
+                    <br>
+                    <h4>
+                        <i class="fs-4 bi-shield-check"></i>
+                        Security and Passwords</h4>
+                    <hr>
+                <div>
+                    <form>
+                        <div class="row">
+                            <div class="col mb-3">
+
+                                <div class="alert alert-warning">For Security Reasons we do not store your raw passswords.
+                                please reset your password if you don't remember.</div>
+
+                                <label  class="form-label">Old Password</label>
+                                <input type="password" name="password" th:value="oldpasswordoldpasswordoldpasswordoldpassword"  class="form-control" required disabled>
+
+                            </div>
 
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label  class="form-label">Email</label>
-                            <input type="text" name="email" th:value="${userDetails.email}"  class="form-control" required disabled>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label  class="form-label">New Password</label>
+                                <input type="text" name="password"   class="form-control" required>
+
+                            </div>
 
                         </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label  class="form-label">Confirm New Password</label>
+                                <input type="text" name="password"   class="form-control" required>
 
-                    </div>
-                </form>
+                            </div>
 
+                        </div>
+                    </form>
+                </div>
             </div>
 
 

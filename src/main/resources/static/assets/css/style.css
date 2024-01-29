@@ -1,4 +1,9 @@
 
+
+body{
+width:100%;
+}
+
 #register_row{
     margin-top:50px;
 }
@@ -51,4 +56,17 @@
 /* Scale up the input when it's focused */
 .registerForm input:focus {
   transform: scale(1.1); /* Adjust the scale factor as needed */
+}
+
+
+#search-form{
+
+    background:url('/assets/img/airlines2.jpg');
+ background-size: cover; /* Adjust to fully cover the content */
+     height: 300px;
+}
+
+#search-form input{
+    color:gray;
+
 }

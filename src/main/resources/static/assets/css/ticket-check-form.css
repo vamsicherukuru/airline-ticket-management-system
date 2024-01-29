@@ -1,8 +1,9 @@
 #ticket-check-form{
 
-    padding: 15px;
-    margin-top:15px;
-    background-color:#4287f5;
-    color:white;
+    padding-top: 15px;
+    padding-bottom: 55px;
 
+
+    color:white;
+    background:url('/assets/img/airlines2.jpg');
 }
