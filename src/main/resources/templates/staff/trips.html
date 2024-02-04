@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OPERATIONS || Airline Ticket Management System</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!-- Option 1: Include in HTML -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+
+</head>
+<body>
+
+
+<!--<div th:replace="fragments/navbar"></div>-->
+<!--&lt;!&ndash;<div th:replace="fragments/booking-banner"></div>&ndash;&gt;-->
+
+
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div th:replace="fragments/operator-navbar"></div>
+    <div class="col py-3">
+
+
+      <div class="container">
+
+
+
+        <br>
+        <h4>
+          <i class="fs-4 bi-card-list"></i>
+          Recently Added Flight Schedules</h4>
+        <hr>
+        <div>
+          <table class="table">
+
+            <thead>
+            <tr>
+              <th>Flight No.</th>
+              <th>Operator</th>
+              <th>Economy Class Seats</th>
+              <th>First Class Seats</th>
+              <th>Business Class Seats</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="flight:${flights}">
+              <td th:text="${flight.flight_no}"></td>
+              <td th:text="${flight.operator}"></td>
+              <td th:text="${flight.economy_seats}"></td>
+              <td th:text="${flight.first_seats}"></td>
+              <td th:text="${flight.business_seats}"></td>
+
+            </tr>
+
+            </tbody>
+
+
+          </table>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

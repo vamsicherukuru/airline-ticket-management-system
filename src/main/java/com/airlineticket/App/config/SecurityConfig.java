@@ -31,8 +31,9 @@ public class SecurityConfig {
                 .csrf(csrf->csrf.disable())
                 .authorizeHttpRequests(auth-> auth
                                 .requestMatchers(WHITE_LIST_ENDPOINTS).permitAll()
-                                .requestMatchers("/admin").hasAnyAuthority("ADMIN")
-                                .requestMatchers("/profile").hasAnyAuthority("USER")
+                                .requestMatchers("/staff/**").hasAnyAuthority("FLIGHT_OPERATIONS_MANAGER", "ADMIN")
+                                .requestMatchers("/admin/**").hasAnyAuthority("ADMIN")
+                                .requestMatchers("/profile/**").authenticated()
                                 .anyRequest().authenticated()
                         )
                 .formLogin(login->
