@@ -7,12 +7,20 @@
             <div class="row">
                 <div class="col-sm">
                     <label  class="form-label">From</label>
-                    <input type="text" class="form-control" >
+                    <select class="form-select">
+                        <option value="" selected disabled>Select an airport</option>
+                        <option th:each="airport:${airports}" th:value="${airport.id}" th:text="${airport.airport_code}+'-'+${airport.airport_name}"></option>
+
+                    </select>
 
                 </div>
                 <div class="col-sm">
                     <label  class="form-label">Destination</label>
-                    <input type="text" class="form-control">
+                    <select class="form-select">
+                        <option value="" selected disabled>Select an airport</option>
+                        <option th:each="airport:${airports}" th:value="${airport.id}" th:text="${airport.airport_code}+'-'+${airport.airport_name}"></option>
+
+                    </select>
                 </div>
 
             </div>
