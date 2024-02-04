@@ -127,7 +127,7 @@
             </thead>
 
             <tbody>
-                <tr th:each="flight:${flights}">
+                <tr class="table-dark" th:each="flight:${flights}">
                   <td th:text="${flight.flight_no}"></td>
                   <td th:text="${flight.operator}"></td>
                   <td th:text="${flight.economy_seats}"></td>

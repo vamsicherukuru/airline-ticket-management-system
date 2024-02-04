@@ -56,7 +56,12 @@ public class StaffController {
     public String tripsPage(Model model){
 
         List<TripDetails> tripDetails = tripDetailsRepository.findAll();
+        List<Airport> airports = airportRepository.findAll();
+        List<FlightDetails> flights = flightDetailsRepository.findAll();
+
         model.addAttribute("trips",tripDetails);
+        model.addAttribute("airports",airports);
+        model.addAttribute("flights",flights);
 
         return "staff/trips";
 
