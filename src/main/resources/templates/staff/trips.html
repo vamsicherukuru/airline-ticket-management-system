@@ -45,17 +45,19 @@
               <th>Arrival Airport</th>
               <th>Date</th>
               <th>Time</th>
+              <th><b>Status</b></th>
             </tr>
             </thead>
 
             <tbody>
             <tr th:each="trip:${trips}">
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td th:text="${trip.flightDetails.flight_no}"></td>
+              <td th:text="${trip.flightDetails.operator}"></td>
+              <td th:text="${trip.from.airport_code}"></td>
+              <td th:text="${trip.to.airport_code}"></td>
               <td th:text="${trip.time}"></td>
               <td th:text="${trip.date}"></td>
+              <td th:text="${trip.trip_status}"></td>
 
 
 

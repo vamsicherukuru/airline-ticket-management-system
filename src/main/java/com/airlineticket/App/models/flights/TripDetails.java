@@ -2,6 +2,7 @@ package com.airlineticket.App.models.flights;
 
 
 import com.airlineticket.App.models.Airport;
+import com.airlineticket.App.models.TripStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -56,6 +57,11 @@ public class TripDetails {
     @ManyToOne
     @JoinColumn(name = "flight_id", nullable = false)
     private FlightDetails flightDetails;
+
+
+    @Column(name = "trip_status",nullable = false)
+    @Enumerated(EnumType.STRING)
+    private TripStatus trip_status = TripStatus.INACTIVE;
 
 
 
