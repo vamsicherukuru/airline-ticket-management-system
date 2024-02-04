@@ -21,6 +21,7 @@ import java.util.Date;
 public class TripDetails {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -50,6 +51,11 @@ public class TripDetails {
     @DateTimeFormat(pattern = "HH:mm")
     @Column(nullable = false)
     private Time time;
+
+
+    @ManyToOne
+    @JoinColumn(name = "flight_id", nullable = false)
+    private FlightDetails flightDetails;
 
 
 

@@ -1,10 +1,7 @@
 package com.airlineticket.App.models.flights;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -16,6 +13,10 @@ import lombok.*;
 public class FlightDetails {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private String id;
+
     @Column(name = "flight_no", unique = true, nullable = false)
     private String flight_no;
 

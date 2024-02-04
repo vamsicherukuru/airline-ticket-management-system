@@ -39,21 +39,25 @@
 
             <thead>
             <tr>
-              <th>Flight No.</th>
+              <th>Flight No</th>
               <th>Operator</th>
-              <th>Economy Class Seats</th>
-              <th>First Class Seats</th>
-              <th>Business Class Seats</th>
+              <th>Departure Airport</th>
+              <th>Arrival Airport</th>
+              <th>Date</th>
+              <th>Time</th>
             </tr>
             </thead>
 
             <tbody>
-            <tr th:each="flight:${flights}">
-              <td th:text="${flight.flight_no}"></td>
-              <td th:text="${flight.operator}"></td>
-              <td th:text="${flight.economy_seats}"></td>
-              <td th:text="${flight.first_seats}"></td>
-              <td th:text="${flight.business_seats}"></td>
+            <tr th:each="trip:${trips}">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td th:text="${trip.time}"></td>
+              <td th:text="${trip.date}"></td>
+
+
 
             </tr>
 
