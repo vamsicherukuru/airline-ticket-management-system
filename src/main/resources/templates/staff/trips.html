@@ -201,10 +201,13 @@ $(document).ready(function () {
             <tr>
               <th>Flight No</th>
               <th>Operator</th>
-              <th>Departure Airport</th>
-              <th>Arrival Airport</th>
+              <th>Departure A/P</th>
+              <th>Arrival A/P</th>
               <th>Date</th>
               <th>Time</th>
+              <th>Economy</th>
+              <th>First</th>
+              <th>Business</th>
               <th><b>Status</b></th>
             </tr>
             </thead>
@@ -215,8 +218,11 @@ $(document).ready(function () {
               <td th:text="${trip.flightDetails.operator}"></td>
               <td th:text="${trip.from.airport_code}"></td>
               <td th:text="${trip.to.airport_code}"></td>
-              <td th:text="${trip.time}"></td>
-              <td th:text="${trip.date}"></td>
+              <td th:text="${#dates.format(trip.date, 'MMM dd yyyy')}"></td>
+              <td th:text="${#dates.format(trip.time, 'h:mm a')}"></td>
+              <td >$<span th:text="${trip.economy_price}"></span></td>
+              <td >$<span th:text="${trip.first_price}"></span></td>
+              <td >$<span th:text="${trip.business_price}"></span></td>
               <td th:text="${trip.trip_status}"></td>
 
 
