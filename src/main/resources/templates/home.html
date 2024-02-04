@@ -18,6 +18,51 @@
     <div th:replace="fragments/ticket-check-form"></div>
 
 
+    <br>
+
+<div class="container">
+    <h5>Upcoming Flights</h5>
+    <hr>
+
+    <div id="flightCards" class="card" th:each="trip:${trips}" style="margin:10px;">
+<!--        <div class="card-header">-->
+<!--            <div class="row">-->
+<!--                <div class="col"><h6 th:text="${#dates.format(trip.date, 'MMM dd yyyy')}"></h6></div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--                <div class="col"><p th:text="${#dates.format(trip.time, 'h:mm a')}"></p></div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div id="flightCardBody" class="card-body">
+                <div class="row" >
+                    <div class="col">
+                <span>
+                    <h6 th:text="${trip.from.airport_name}"></h6>
+                    <small th:text="${trip.from.airport_code}"></small>
+                </span>
+                    </div>
+                    <div class="col text-center">
+                        <i class="fa-solid fa-route"></i>
+                    </div>
+                    <div class="col">
+                        <h6 th:text="${trip.to.airport_name}"></h6>
+                        <small th:text="${trip.to.airport_code}"></small>
+                    </div>
+
+                    <div class="col text-center">
+                        <a href="#" class="btn btn-outline-primary">Select Flight</a>
+
+                    </div>
+
+                </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
 
 
 

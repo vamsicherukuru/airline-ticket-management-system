@@ -70,3 +70,22 @@ width:100%;
     color:gray;
 
 }
+
+
+
+
+#flightCards {
+  /* Set initial styles for the flightCards element */
+  position: relative;
+  /* Add any other styles you need for flightCards */
+
+  /* Transition property for smooth scaling effect */
+  transition: transform 3s ease-in-out;
+}
+
+#flightCards:hover #flightCardBody {
+  /* Apply styles to flightCardBody when flightCards is hovered */
+  transform: scale(1); /* You can adjust the scaling factor as needed */
+  box-shadow:0px 0px 10px (0,0,0,0.5);
+  background:silver;
+}
