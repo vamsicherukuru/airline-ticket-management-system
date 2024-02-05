@@ -64,6 +64,19 @@ public class TripDetails {
     private TripStatus trip_status = TripStatus.INACTIVE;
 
 
-
-
+    @Override
+    public String toString() {
+        return "TripDetails{" +
+                "id=" + id +
+                ", from=" + from +
+                ", to=" + to +
+                ", economy_price=" + economy_price +
+                ", first_price=" + first_price +
+                ", business_price=" + business_price +
+                ", date=" + date +
+                ", time=" + time +
+                ", flightDetails=" + flightDetails +
+                ", trip_status=" + trip_status +
+                '}';
+    }
 }

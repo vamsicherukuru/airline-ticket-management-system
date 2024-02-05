@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Airline Ticket Management System</title>
+
+  <div th:replace="fragments/header"></div>
+
+
+</head>
+<body>
+
+
+<div th:replace="fragments/navbar"></div>
+<!--<div th:replace="fragments/booking-banner"></div>-->
+
+
+<form method="post">
+
+  <div class="container" id="tripHeader">
+<br>
+    <p style="color:green">ONE WAY</p>
+
+    <p style="color:darkblue; font-size:2em;">
+      <span th:text="${selected_trip.from.city}"></span>
+      to
+      <span th:text="${selected_trip.to.city}"></span>
+      <span style="font-size:20px;" th:text="${#dates.format(selected_trip.date, 'MMM dd')}"></span>
+      <span style="font-size:20px;">,</span>
+      <span style="font-size:20px;" th:text="${#dates.format(selected_trip.time, 'h:mm a')}"></span>
+    </p>
+
+
+  </div>
+
+
+<div class="container">
+  <hr>
+
+
+    <div class="row">
+      <div class="col">
+        <label>Passengers</label>
+        <select class="form-control" name="seat_count">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+        </select>
+      </div>
+
+
+      <div class="col">
+        <label>Passport Issuing Country</label>
+        <input class="form-control" name="country" type="text">
+      </div>
+      <div class="col">
+        <label>Passport Number</label>
+        <input class="form-control" name="passport_number" type="text">
+      </div>
+
+    </div>
+    <br>
+    <p style="color:darkblue">PRIMARY PASSENGER INFORMATION</p>
+    <div class="row">
+
+      <div class="col">
+        <label>Full Name <sup>* As shown on passport</sup></label>
+        <input class="form-control" name="primary_passenger_name" type="text">
+      </div>
+
+
+      <div class="col">
+        <label>Age</label>
+        <input class="form-control" name="age" min="16" type="number">
+      </div>
+      <div class="col">
+        <label>Contact Number</label>
+        <input class="form-control" name="passenger_phone_number" type="text">
+      </div>
+
+
+
+    </div>
+
+
+
+
+  <div class="row">
+
+    <div class="col">
+      <label>Email</label>
+      <input class="form-control" name="primary_passenger_email" type="email">
+    </div>
+
+
+    <div class="col">
+
+    </div>
+    <div class="col">
+
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+<div class="container">
+<br>
+  <p style="color:darkblue;font-size:2em;">Use caution when packing</p>
+  <p>Some everyday products, like electronic cigarettes and aerosol spray starch, can be dangerous when
+    transported on the aircraft in carry-on and/or checked baggage. Changes in temperature or pressure can
+    cause some items to leak, generate toxic fumes or start a fire. Carriage of prohibited items may result in
+    fines or in certain cases imprisonment.
+    Please ensure there are no forbidden hazardous materials in your baggage like:</p>
+
+
+
+  <br>
+  <button type="submit" class="btn btn-warning btn-lg">
+    <span><i class="fa-solid fa-lock"></i></span>
+    Go to Checkout</button>
+</div>
+
+</form>
+</body>
+</html>

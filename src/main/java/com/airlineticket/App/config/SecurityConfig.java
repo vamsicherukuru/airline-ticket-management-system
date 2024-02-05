@@ -22,7 +22,8 @@ public class SecurityConfig {
             "/save/user/**", // Add this line
             "/",
             "/api/users",
-            "/assets/**"
+            "/assets/**",
+            "/booking/**"  //should not be whitelisted
     };
 
     @Bean

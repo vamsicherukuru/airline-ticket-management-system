@@ -33,7 +33,28 @@
 <!--            </div>-->
 <!--        </div>-->
         <div id="flightCardBody" class="card-body">
+
                 <div class="row" >
+                    <div class="col text-center">
+                        <img th:src="@{/assets/img/icons/airlines_default.png}" style="height:3em;">
+                        <div class="row">
+                            <p>
+                                <span th:text="${#dates.format(trip.date, 'MMM dd')}"></span><br>
+                                <span th:text="${#dates.format(trip.time, 'h:mm a')}"></span>
+                            </p>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="col">
+                        <div class="row">
+                            <h2 th:text="${trip.flightDetails.flight_no}"></h2>
+                        </div>
+
+                    </div>
                     <div class="col">
                 <span>
                     <h6 th:text="${trip.from.airport_name}"></h6>
@@ -49,7 +70,7 @@
                     </div>
 
                     <div class="col text-center">
-                        <a href="#" class="btn btn-outline-primary">Select Flight</a>
+                        <a th:href="@{/booking/flight/{id}(id=${trip.id})}" class="btn btn-outline-primary">Select Flight</a>
 
                     </div>
                     <div class="col text-center">
