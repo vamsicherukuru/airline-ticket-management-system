@@ -22,7 +22,6 @@
 
 <div class="container">
     <h5>Upcoming Flights</h5>
-    <hr>
 
     <div id="flightCards" class="card" th:each="trip:${trips}" style="margin:10px;">
 <!--        <div class="card-header">-->
@@ -53,10 +52,11 @@
                         <a href="#" class="btn btn-outline-primary">Select Flight</a>
 
                     </div>
+                    <div class="col text-center">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
 
                 </div>
-
-
         </div>
     </div>
 

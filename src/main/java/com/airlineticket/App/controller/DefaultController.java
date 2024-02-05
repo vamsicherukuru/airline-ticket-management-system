@@ -24,8 +24,6 @@ public class DefaultController {
     @Autowired
     TripDetailsRepository tripDetailsRepository;
 
-
-
     @GetMapping("/")
     public String homePage(Model model){
         List<Airport> airports = airportRepository.findAll();

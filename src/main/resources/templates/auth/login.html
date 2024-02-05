@@ -13,12 +13,15 @@
 <div th:replace="fragments/navbar"></div>
 <!--<div th:replace="fragments/booking-banner"></div>-->
 
-<center>
+
     <div class="container loginForm">
 
-        <h4>ATMS Login</h4>
-        <hr>
-        <form th:action="@{/login}" method="post">
+        <center>
+            <h4><i class="fa-solid fa-arrow-right-to-bracket"></i>
+                LOGIN</h4>
+            <hr>
+        </center>
+        <form th:action="@{/login}" method="post" id="loginForm">
             <div th:if="${param.error}" class="alert alert-warning">
                 Invalid username and password.
             </div>
@@ -42,16 +45,19 @@
 
             </div>
 
-            <button type="submit" class="btn btn-primary btn-lg">login</button>
+            <center>
+                <button type="submit" class="btn btn-primary btn-lg">login</button>
+
+
 <hr>
             <p>New user? Click here to create an account<br>
             <a th:href="@{/register}">create an account</a>
             </p>
+            </center>
         </form>
 
     </div>
 
-</center>
 
 
 </body>
