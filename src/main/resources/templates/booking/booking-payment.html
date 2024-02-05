@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Airline Ticket Management System</title>
+
+  <div th:replace="fragments/header"></div>
+
+
+</head>
+<body>
+
+
+<div th:replace="fragments/navbar"></div>
+<!--<div th:replace="fragments/booking-banner"></div>-->
+
+
+<form method="post">
+
+  <div class="container" id="tripHeader">
+    <br>
+    <p style="color:green">
+      <span><i class="fa-solid fa-credit-card"></i></span>
+      PAYMENT GATEWAY</p>
+
+    <p style="color:darkblue; font-size:2em;">
+      Total: 584$
+
+    </p>
+
+
+  </div>
+
+
+  <div class="container">
+    <hr>
+
+<div class="row">
+
+  <div class="col">
+    <label>CARD NUMBER</label>
+    <input class="form-control" name="card_number" type="text">
+  </div>
+</div>
+    <div class="row">
+
+      <div class="col">
+        <label>NAME ON CARD</label>
+        <input class="form-control" name="name_on_card" type="text">
+      </div>
+      <div class="col">
+        <label>EXPIRY DATE</label>
+        <input class="form-control" name="expiry_date" type="text">
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col col-sm-4">
+        <label>CVV</label>
+        <input class="form-control" name="cvv" type="text">
+      </div>
+
+
+    </div>
+    <br>
+    <div class="row col-sm-4">
+
+      <div class="col">
+        <i class="fa-brands fa-cc-mastercard" style="font-size:2em;"></i>
+      </div>
+      <div class="col">
+        <i class="fa-brands fa-cc-visa" style="font-size:2em;"></i>
+      </div>
+      <div class="col">
+        <i class="fa-brands fa-cc-amex" style="font-size:2em;"></i>
+      </div>
+      <div class="col">
+        <i class="fa-brands fa-cc-discover" style="font-size:2em;"></i>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="container">
+    <br>
+
+    <p>I agree to the Terms & Conditions.</p>
+
+
+
+    <br>
+    <!--  <button type="submit" class="btn btn-warning btn-lg">-->
+    <!--    <span><i class="fa-solid fa-lock"></i></span>-->
+    <!--    Go to Checkout</button>-->
+
+    <a th:href="@{#}" class="btn btn-warning btn-lg">
+      <span><i class="fa-regular fa-circle-check"></i></span>
+      Pay Securely</a>
+  </div>
+
+</form>
+</body>
+</html>

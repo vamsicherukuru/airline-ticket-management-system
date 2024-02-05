@@ -31,7 +31,7 @@ public class BookingController {
 
 
 
-    @GetMapping("/booking/flight//payment")
+    @GetMapping("/booking/flight/payment")
     public String bookingPaymentFlightPage(){
 
 

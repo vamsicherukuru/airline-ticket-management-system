@@ -120,14 +120,18 @@
     transported on the aircraft in carry-on and/or checked baggage. Changes in temperature or pressure can
     cause some items to leak, generate toxic fumes or start a fire. Carriage of prohibited items may result in
     fines or in certain cases imprisonment.
-    Please ensure there are no forbidden hazardous materials in your baggage like:</p>
+    Please ensure there are no forbidden hazardous materials in your baggage.</p>
 
 
 
   <br>
-  <button type="submit" class="btn btn-warning btn-lg">
+<!--  <button type="submit" class="btn btn-warning btn-lg">-->
+<!--    <span><i class="fa-solid fa-lock"></i></span>-->
+<!--    Go to Checkout</button>-->
+
+  <a th:href="@{/booking/flight/payment}" class="btn btn-warning btn-lg">
     <span><i class="fa-solid fa-lock"></i></span>
-    Go to Checkout</button>
+    Go to Checkout</a>
 </div>
 
 </form>
