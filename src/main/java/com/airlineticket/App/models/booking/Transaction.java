@@ -69,7 +69,28 @@ public class Transaction {
 
 
 
+    @Column(name = "total_amount")
+    private Double total_amount;
 
 
-
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id=" + id +
+                ", card_number='" + card_number + '\'' +
+                ", name_on_card='" + name_on_card + '\'' +
+                ", expiry_date='" + expiry_date + '\'' +
+                ", cvv='" + cvv + '\'' +
+                ", street_address='" + street_address + '\'' +
+                ", address_2='" + address_2 + '\'' +
+                ", billing_city='" + billing_city + '\'' +
+                ", billing_country='" + billing_country + '\'' +
+                ", billing_zipcode='" + billing_zipcode + '\'' +
+                ", payment_status=" + payment_status +
+                ", user_id=" + user_id +
+                ", trip_id=" + trip_id +
+                ", reservation_id=" + reservation_id +
+                ", total_amount=" + total_amount +
+                '}';
+    }
 }

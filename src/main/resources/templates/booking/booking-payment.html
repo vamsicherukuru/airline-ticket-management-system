@@ -23,7 +23,7 @@
       PAYMENT GATEWAY</p>
 
     <p style="color:darkblue; font-size:2em;">
-      Total: 584$
+      Total: <span th:text="${total_amount}"></span>$
 
     </p>
 
@@ -32,19 +32,22 @@
 
 
 
-
+<form method="post" id="paymentForm"
+      th:action="@{/booking/flight/{selectedTripId}/{reservationId}/payment(selectedTripId=${selected_trip}, reservationId=${reservation_id})}">
 
 
 <div class="container">
   <div class="row ">
     <div class="col">
-      <form method="post">
+
         <div class="container">
 
 
           <div class="row">
 
             <div class="col">
+              <input th:value="${total_amount}" name="total_amount" type="hidden">
+
               <input class="form-control" name="card_number" type="text" placeholder="CARD NUMBER">
             </div>
           </div><br>
@@ -84,14 +87,14 @@
             </div>
           </div>
         </div>
-      </form>
+
 
     </div>
 
 
     <!--  Billing Address-->
     <div class="col">
-        <form id="billingAddressForm" method="post">
+
           <div class="row">
             <input type="text" class="form-control" name="street_address" placeholder="STREET ADDRESS">
           </div><br>
@@ -109,7 +112,7 @@
           <div class="row">
             <input type="text" class="form-control" name="billing_zipcode" placeholder="ZipCode">
           </div><br>
-        </form>
+
     </div>
   </div>
 
@@ -129,14 +132,18 @@
     <!--    <span><i class="fa-solid fa-lock"></i></span>-->
     <!--    Go to Checkout</button>-->
 
-    <a th:href="@{#}" class="btn btn-warning btn-lg" id="payButton">
+    <button type="submit" th:href="@{#}" class="btn btn-warning btn-lg" id="payButton">
       <span><i class="fa-regular fa-circle-check"></i></span>
-      Pay Securely</a>
+      Pay Securely</button>
   </div>
+</form>
+
+
+
 
 <script>
     $(document).ready(function () {
-        $("#reservationBasicForm").submit(function (e) {
+        $("#paymentForm").submit(function (e) {
             e.preventDefault(); // Prevent the default form submission behavior
 
             // Serialize form data
@@ -147,13 +154,10 @@
                 type: "POST",
                 url: $(this).attr("action"),
                 data: formData,
-                success: function (reservationId) {
-                    var selectedTripId = $("[name='selected_trip']").val();
-                    console.log("Reservation Created!!!"+reservationId);
-                    setTimeout(function() {
-                        // Redirect to the payment page with selected_trip.id upon successful form submission
-                        window.location.href = `/booking/flight/${selectedTripId}/${reservationId}/payment`;
-                    }, 2000);
+                success: function () {
+
+                    console.log("Payment Successful!!!");
+
                 },
                 error: function () {
 
