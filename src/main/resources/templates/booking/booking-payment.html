@@ -107,7 +107,7 @@
             </div>
           </div><br>
           <div class="row">
-            <input type="text" class="form-control" name="address_2" placeholder="ZipCode">
+            <input type="text" class="form-control" name="billing_zipcode" placeholder="ZipCode">
           </div><br>
         </form>
     </div>
@@ -133,6 +133,37 @@
       <span><i class="fa-regular fa-circle-check"></i></span>
       Pay Securely</a>
   </div>
+
+<script>
+    $(document).ready(function () {
+        $("#reservationBasicForm").submit(function (e) {
+            e.preventDefault(); // Prevent the default form submission behavior
+
+            // Serialize form data
+            var formData = $(this).serialize();
+
+            // Make an AJAX request to submit the form data
+            $.ajax({
+                type: "POST",
+                url: $(this).attr("action"),
+                data: formData,
+                success: function (reservationId) {
+                    var selectedTripId = $("[name='selected_trip']").val();
+                    console.log("Reservation Created!!!"+reservationId);
+                    setTimeout(function() {
+                        // Redirect to the payment page with selected_trip.id upon successful form submission
+                        window.location.href = `/booking/flight/${selectedTripId}/${reservationId}/payment`;
+                    }, 2000);
+                },
+                error: function () {
+
+                    $("#errorMessage").show().text("Something went wrong. Please try again.");
+                }
+            });
+        });
+    });
+</script>
+
 
 
 </body>

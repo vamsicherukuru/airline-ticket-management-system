@@ -31,8 +31,10 @@ public class BookingController {
 
 
 
-    @GetMapping("/booking/flight/payment")
-    public String bookingPaymentFlightPage(){
+    @GetMapping("/booking/flight/{selectedTripId}/{reservationId}/payment")
+    public String bookingPaymentFlightPage(@PathVariable Integer selectedTripId,
+                                           @PathVariable Integer reservationId
+                                           ){
 
 
         return "booking/booking-payment";

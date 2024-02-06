@@ -14,7 +14,7 @@
 <!--<div th:replace="fragments/booking-banner"></div>-->
 
 
-<form id="reservationBasicForm">
+<form id="reservationBasicForm" th:action="@{/booking/flight/reservation}">
 
   <div class="container" id="tripHeader">
 <br>
@@ -137,7 +137,7 @@
 
 
   <br>
-  <button id="submitReservation" class="btn btn-warning btn-lg">
+  <button type="submit" id="submitReservation" class="btn btn-warning btn-lg">
     <span><i class="fa-solid fa-lock"></i></span>
     Go to Checkout</button>
 
@@ -146,37 +146,48 @@
 <!--    Go to Checkout</a>-->
 </div>
 
+
+
+
+  <div id="errorMessage"   class="alert alert-warning" style="display: none; color: red;">
+    Something went wrong. Please try again.
+  </div>
 </form>
 
 
 
-
-
-
 <script>
+    $(document).ready(function () {
+        $("#reservationBasicForm").submit(function (e) {
+            e.preventDefault(); // Prevent the default form submission behavior
 
-  $(document).ready(function () {
-        $("#submitReservation").click(function () {
             // Serialize form data
-            var formData = $("#reservationBasicForm").serialize();
+            var formData = $(this).serialize();
 
-            // Send AJAX request
+            // Make an AJAX request to submit the form data
             $.ajax({
                 type: "POST",
-                url: "/booking/flight/reservation",
+                url: $(this).attr("action"),
                 data: formData,
-                success: function (response) {
-                    console.log(response);
-
+                success: function (reservationId) {
+                    var selectedTripId = $("[name='selected_trip']").val();
+                    console.log("Reservation Created!!!"+reservationId);
+                    setTimeout(function() {
+                        // Redirect to the payment page with selected_trip.id upon successful form submission
+                        window.location.href = `/booking/flight/${selectedTripId}/${reservationId}/payment`;
+                    }, 2000);
                 },
-                error: function (error) {
-                    console.error(error);
-                    // Handle error, you may show an error message
+                error: function () {
+
+                    $("#errorMessage").show().text("Something went wrong. Please try again.");
                 }
             });
         });
     });
 </script>
+
+
+
 
 
 

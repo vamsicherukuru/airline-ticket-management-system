@@ -25,7 +25,7 @@ public class BookingRestController {
     TripDetailsRepository tripDetailsRepository;
 
     @PostMapping("/booking/flight/reservation")
-    public String reserveInfoPage(@RequestParam Integer passenger_count,
+    public Integer reserveInfoPage(@RequestParam Integer passenger_count,
                                   @RequestParam String seat_class,
                                   @RequestParam String passport_country,
                                   @RequestParam String passport_number,
@@ -52,9 +52,9 @@ public class BookingRestController {
 
         System.out.println(currentReservation);
 
-        reservationsRepository.save(currentReservation);
+        Reservations savedReservation = reservationsRepository.save(currentReservation);
 
-        return "Reservation Saved Successfully";
+        return  savedReservation.getId();
     }
 
 }
