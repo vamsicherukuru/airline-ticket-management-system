@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collections;
 
 @RestController
-public class UserController {
+public class UserRestController {
 
     @Autowired
     private UserRepository userRepository;

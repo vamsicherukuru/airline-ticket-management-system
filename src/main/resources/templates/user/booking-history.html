@@ -33,7 +33,7 @@
                     </li>
 
                     <li>
-                        <a th:href="@{/profile/booking-history}" class="nav-link px-0 align-middle">
+                        <a href="#" class="nav-link px-0 align-middle">
                             <i class="fa-solid fa-clock-rotate-left"></i><span class="ms-1 d-none d-sm-inline">Booking History</span> </a>
                     </li>
                     <li>
@@ -41,7 +41,7 @@
                             <i class="fa-solid fa-plane-circle-check"></i> <span class="ms-1 d-none d-sm-inline">Web Check-In</span> </a>
                     </li>
                     <li>
-                        <a th:href="@{/profile/mytickets}" class="nav-link px-0 align-middle">
+                        <a href="#" class="nav-link px-0 align-middle">
                             <i class="fa-solid fa-ticket"></i> <span class="ms-1 d-none d-sm-inline">My Tickets</span> </a>
                     </li>
                     <li>
@@ -76,93 +76,26 @@
                 </div>
             </div>
         </div>
+
+
         <div class="col py-3">
 
 
             <div class="container">
                 <br>
                 <h4>
-                    <i class="fs-4 bi-person-circle"></i>
-                    My Information</h4>
+                    <i class="fa-solid fa-calendar-check"></i>
+                    My Bookings</h4>
                 <hr>
-                <div>
-                    <form>
-                        <div class="row">
-                            <div class="col mb-3">
-                                <label  class="form-label">First Name</label>
-                                <input type="text" name="first_name" th:value="${userDetails.first_name}"  class="form-control" required disabled>
-
-                            </div>
-                            <div class="col mb-3">
-                                <label  class="form-label">Last Name</label>
-                                <input type="text" name="last_name" th:value="${userDetails.last_name}"  class="form-control" required disabled>
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col mb-3">
-                                <label  class="form-label">Email</label>
-                                <input type="text" name="email" th:value="${userDetails.email}"  class="form-control" required disabled>
-
-                            </div>
-
-                        </div>
-                    </form>
-                </div>
 
 
 
-
-
-
-                    <br>
-                    <h4>
-                        <i class="fs-4 bi-shield-check"></i>
-                        Security and Passwords</h4>
-                    <hr>
-                <div>
-                    <form>
-                        <div class="row">
-                            <div class="col mb-3">
-
-                                <div class="alert alert-warning">For <b>Security Reasons</b> we do not store your raw passswords.
-                                please reset your password if you don't remember.</div>
-
-                                <label  class="form-label">Old Password</label>
-                                <input type="password" name="password" th:value="oldpasswordoldpasswordoldpasswordoldpassword"  class="form-control" required disabled>
-
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col mb-3">
-                                <label  class="form-label">New Password</label>
-                                <input type="text" name="password"   class="form-control" required>
-
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col mb-3">
-                                <label  class="form-label">Confirm New Password</label>
-                                <input type="text" name="password"   class="form-control" required>
-
-                            </div>
-
-                        </div>
-                        <div class="row">
-                            <div class="col mb-3">
-                                <button type="submit" class="btn btn-warning">Reset Password</button>
-
-                            </div>
-
-                        </div>
-                    </form>
-                </div>
             </div>
 
 
         </div>
+
+
     </div>
 </div>
 
