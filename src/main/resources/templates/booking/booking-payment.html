@@ -14,7 +14,7 @@
 <!--<div th:replace="fragments/booking-banner"></div>-->
 
 
-<form method="post">
+
 
   <div class="container" id="tripHeader">
     <br>
@@ -27,60 +27,94 @@
 
     </p>
 
-
-  </div>
-
-
-  <div class="container">
     <hr>
-
-<div class="row">
-
-  <div class="col">
-    <label>CARD NUMBER</label>
-    <input class="form-control" name="card_number" type="text">
   </div>
+
+
+
+
+
+
+<div class="container">
+  <div class="row ">
+    <div class="col">
+      <form method="post">
+        <div class="container">
+
+
+          <div class="row">
+
+            <div class="col">
+              <input class="form-control" name="card_number" type="text" placeholder="CARD NUMBER">
+            </div>
+          </div><br>
+          <div class="row">
+
+            <div class="col">
+
+              <input class="form-control" name="name_on_card" placeholder="NAME ON CARD" type="text">
+            </div>
+            <div class="col">
+              <input class="form-control" name="expiry_date" placeholder="EXPIRY DATE" type="text">
+            </div>
+
+          </div><br>
+          <div class="row">
+
+            <div class="col col-sm-4">
+              <input class="form-control" name="cvv" placeholder="CVV" type="text">
+            </div>
+
+
+          </div>
+          <br>
+          <div class="row col-md-6">
+
+            <div class="col">
+              <i class="fa-brands fa-cc-mastercard" style="font-size:2em;"></i>
+            </div>
+            <div class="col">
+              <i class="fa-brands fa-cc-visa" style="font-size:2em;"></i>
+            </div>
+            <div class="col">
+              <i class="fa-brands fa-cc-amex" style="font-size:2em;"></i>
+            </div>
+            <div class="col">
+              <i class="fa-brands fa-cc-discover" style="font-size:2em;"></i>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+
+    <!--  Billing Address-->
+    <div class="col">
+        <form id="billingAddressForm" method="post">
+          <div class="row">
+            <input type="text" class="form-control" name="street_address" placeholder="STREET ADDRESS">
+          </div><br>
+          <div class="row">
+            <input type="text" class="form-control" name="address_2" placeholder="Apt, Suite No">
+          </div><br>
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" name="billing_city" placeholder="City">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" name="billing_country" placeholder="Country">
+            </div>
+          </div><br>
+          <div class="row">
+            <input type="text" class="form-control" name="address_2" placeholder="ZipCode">
+          </div><br>
+        </form>
+    </div>
+  </div>
+
+
 </div>
-    <div class="row">
-
-      <div class="col">
-        <label>NAME ON CARD</label>
-        <input class="form-control" name="name_on_card" type="text">
-      </div>
-      <div class="col">
-        <label>EXPIRY DATE</label>
-        <input class="form-control" name="expiry_date" type="text">
-      </div>
-
-    </div>
-    <div class="row">
-
-      <div class="col col-sm-4">
-        <label>CVV</label>
-        <input class="form-control" name="cvv" type="text">
-      </div>
-
-
-    </div>
-    <br>
-    <div class="row col-sm-4">
-
-      <div class="col">
-        <i class="fa-brands fa-cc-mastercard" style="font-size:2em;"></i>
-      </div>
-      <div class="col">
-        <i class="fa-brands fa-cc-visa" style="font-size:2em;"></i>
-      </div>
-      <div class="col">
-        <i class="fa-brands fa-cc-amex" style="font-size:2em;"></i>
-      </div>
-      <div class="col">
-        <i class="fa-brands fa-cc-discover" style="font-size:2em;"></i>
-      </div>
-    </div>
-  </div>
-
-
 
 
   <div class="container">
@@ -95,11 +129,11 @@
     <!--    <span><i class="fa-solid fa-lock"></i></span>-->
     <!--    Go to Checkout</button>-->
 
-    <a th:href="@{#}" class="btn btn-warning btn-lg">
+    <a th:href="@{#}" class="btn btn-warning btn-lg" id="payButton">
       <span><i class="fa-regular fa-circle-check"></i></span>
       Pay Securely</a>
   </div>
 
-</form>
+
 </body>
 </html>

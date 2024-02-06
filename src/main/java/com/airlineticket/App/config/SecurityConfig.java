@@ -23,7 +23,7 @@ public class SecurityConfig {
             "/",
             "/api/users",
             "/assets/**",
-            "/booking/**"  //should not be whitelisted
+//            "/booking/**"  //should not be whitelisted
     };
 
     @Bean

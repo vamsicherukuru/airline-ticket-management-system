@@ -14,7 +14,7 @@
 <!--<div th:replace="fragments/booking-banner"></div>-->
 
 
-<form method="post">
+<form id="reservationBasicForm">
 
   <div class="container" id="tripHeader">
 <br>
@@ -39,8 +39,10 @@
 
     <div class="row">
       <div class="col">
+
+        <input type="hidden" th:value="${selected_trip.id}" name="selected_trip">
         <label>Passengers</label>
-        <select class="form-control" name="seat_count">
+        <select class="form-control" name="passenger_count">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -49,11 +51,21 @@
           <option>6</option>
         </select>
       </div>
+      <div class="col">
+        <label>Class</label>
+        <select class="form-control" name="seat_class">
+          <option value="" disabled selected>Select a Class</option>
+          <option value="ECONOMY">ECONOMY CLASS</option>
+          <option value="FIRST_CLASS">FIRST CLASS</option>
+          <option value="BUSINESS">BUSINESS CLASS</option>
+
+        </select>
+      </div>
 
 
       <div class="col">
         <label>Passport Issuing Country</label>
-        <input class="form-control" name="country" type="text">
+        <input class="form-control" name="passport_country" type="text">
       </div>
       <div class="col">
         <label>Passport Number</label>
@@ -73,11 +85,11 @@
 
       <div class="col">
         <label>Age</label>
-        <input class="form-control" name="age" min="16" type="number">
+        <input class="form-control" name="primary_passenger_age" min="16" type="number">
       </div>
       <div class="col">
         <label>Contact Number</label>
-        <input class="form-control" name="passenger_phone_number" type="text">
+        <input class="form-control" name="primary_passenger_number" type="text">
       </div>
 
 
@@ -125,15 +137,50 @@
 
 
   <br>
-<!--  <button type="submit" class="btn btn-warning btn-lg">-->
-<!--    <span><i class="fa-solid fa-lock"></i></span>-->
-<!--    Go to Checkout</button>-->
-
-  <a th:href="@{/booking/flight/payment}" class="btn btn-warning btn-lg">
+  <button id="submitReservation" class="btn btn-warning btn-lg">
     <span><i class="fa-solid fa-lock"></i></span>
-    Go to Checkout</a>
+    Go to Checkout</button>
+
+<!--  <a th:href="@{/booking/flight/payment}" class="btn btn-warning btn-lg">-->
+<!--    <span><i class="fa-solid fa-lock"></i></span>-->
+<!--    Go to Checkout</a>-->
 </div>
 
 </form>
+
+
+
+
+
+
+<script>
+
+  $(document).ready(function () {
+        $("#submitReservation").click(function () {
+            // Serialize form data
+            var formData = $("#reservationBasicForm").serialize();
+
+            // Send AJAX request
+            $.ajax({
+                type: "POST",
+                url: "/booking/flight/reservation",
+                data: formData,
+                success: function (response) {
+                    console.log(response);
+
+                },
+                error: function (error) {
+                    console.error(error);
+                    // Handle error, you may show an error message
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
+
 </body>
 </html>
