@@ -23,7 +23,14 @@ public class UserController {
 
 
     @GetMapping("/profile/mytickets")
-    public String myTicketsPage(){
+    public String myTicketsPage(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+
+
+        List<Reservations> myreservations = reservationsRepository.findAllByUserId(user);
+
+        model.addAttribute("myreservations",myreservations);
         
         return "user/my-tickets";
 

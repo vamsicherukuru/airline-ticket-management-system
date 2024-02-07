@@ -96,7 +96,7 @@
                         <h5>Trip to
                             <span th:text="${myreservation.trip_id.to.city}"></span>
                             <span>
-                                <button class="btn btn-success btn-sm">CONFIRMED</button>
+                                <button class="btn btn-success btn-sm" th:text="${myreservation.reservation_status}"></button>
                             </span>
                         </h5>
                         <hr>
