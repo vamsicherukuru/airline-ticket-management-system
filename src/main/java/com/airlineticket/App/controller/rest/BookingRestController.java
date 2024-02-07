@@ -51,7 +51,7 @@ public class BookingRestController {
         currentReservation.setTrip_id(selected_trip);
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
-        currentReservation.setUser_id(user);
+        currentReservation.setUserId(user);
 
         System.out.println(currentReservation);
 

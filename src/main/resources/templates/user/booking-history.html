@@ -90,6 +90,111 @@
 
 
 
+
+                <div class="container" id="myBookingCard" th:each="myreservation:${myreservations}">
+                    <div class="row">
+                        <h5>Trip to
+                            <span th:text="${myreservation.trip_id.to.city}"></span>
+                            <span>
+                                <button class="btn btn-success btn-sm">CONFIRMED</button>
+                            </span>
+                        </h5>
+                        <hr>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <span><b>Reservation Number</b></span>
+                                </div>
+                                <div class="col">
+                                    <span th:text="${myreservation.id}"></span>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <span><b>Date of Journey</b></span>
+                                </div>
+                                <div class="col">
+                                    <span th:text="${#dates.format(myreservation.trip_id.date, 'MMM dd')}"></span>
+                                    ,
+                                    <span th:text="${#dates.format(myreservation.trip_id.time, 'h:mm a')}"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <span><b>Departure</b></span>
+                                </div>
+                                <div class="col">
+                                    <span th:text="${myreservation.trip_id.from}"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <span><b>Arrival</b></span>
+                                </div>
+                                <div class="col">
+                                    <span th:text="${myreservation.trip_id.to}"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <span><b>Passenger Name</b></span>
+                                </div>
+                                <div class="col">
+                                    <span th:text="${myreservation.primary_passenger_name}"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <span><b>Class</b></span>
+                                </div>
+                                <div class="col">
+                                    <span th:text="${myreservation.seat_class}"></span>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <span><b>Payment Status</b></span>
+                                </div>
+                                <div class="col">
+                                    <span th:text="${myreservation.payment_status}"></span>
+                                     </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <span><b>Contact Number</b></span>
+                                </div>
+                                <div class="col">
+                                    <span th:text="${myreservation.primary_passenger_number}"></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <span><b>Passenger Count</b></span>
+                                </div>
+                                <div class="col">
+                                    <span th:text="${myreservation.passengercount}"></span>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+
             </div>
 
 

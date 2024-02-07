@@ -25,8 +25,8 @@ public class Reservations {
 
 
         @ManyToOne
-        @JoinColumn(name = "user_id", nullable = false)
-        private User user_id;
+        @JoinColumn(name = "userId", nullable = false)
+        private User userId;
 
 
         @ManyToOne
@@ -70,11 +70,13 @@ public class Reservations {
         private ReservationStatus reservation_status=ReservationStatus.HOLD;
 
 
+
+
         @Override
         public String toString() {
                 return "Reservations{" +
                         "id=" + id +
-                        ", user_id=" + user_id +
+                        ", user_id=" + userId +
                         ", trip_id=" + trip_id +
                         ", passengercount=" + passengercount +
                         ", seat_class=" + seat_class +
