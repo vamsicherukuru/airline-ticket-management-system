@@ -87,6 +87,44 @@
           <i class="fs-4 bi-person-circle"></i>
           My Tickets</h4>
         <hr>
+        <div class="container" id="myTicketCard" th:each="myreservation:${myreservations}">
+
+
+
+          <div id="eticket-head">
+            <p><img th:src="@{/assets/img/icons/va-1.png}" style="height:2em;">
+              Vamsi Airways</p>
+            <h4>E-TICKET</h4>
+
+          </div>
+
+          <div class="row">
+            <div class="col text-left"><h4>YOUR TICKET ITINERARY</h4></div>
+            <div class="col text-right">
+              YOUR PNR NUMBER: VA<span th:text="${myreservation.id}"></span>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="container" id="myBookingCard" th:each="myreservation:${myreservations}">
           <div class="row">
             <h5>Trip to
@@ -103,9 +141,9 @@
             <div class="col">
               <div class="row">
                 <div class="col">
-                  <span><b>Reservation Number</b></span>
+                  <span><b>PNR Number</b></span>
                 </div>
-                <div class="col">
+                <div class="col">VA
                   <span th:text="${myreservation.id}"></span>
 
                 </div>
