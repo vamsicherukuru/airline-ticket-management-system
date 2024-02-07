@@ -5,6 +5,9 @@
 
   <div th:replace="fragments/header"></div>
 
+  <link href='https://fonts.googleapis.com/css?family=Libre Barcode 39' rel='stylesheet'>
+  <!-- jsPDF library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.0/html2pdf.bundle.min.js"></script>
 
 </head>
 <body>
@@ -87,25 +90,316 @@
           <i class="fs-4 bi-person-circle"></i>
           My Tickets</h4>
         <hr>
+
         <div class="container" id="myTicketCard" th:each="myreservation:${myreservations}">
 
-
+        <button id="printButton">Print</button>
 
           <div id="eticket-head">
-            <p><img th:src="@{/assets/img/icons/va-1.png}" style="height:2em;">
-              Vamsi Airways</p>
-            <h4>E-TICKET</h4>
+            <img th:src="@{/assets/img/icons/va-1.png}" style="height:4em;">
+              Vamsi Airways
+            <h4>Flight Ticket - <span th:text="${myreservation.trip_id.from.city}"></span> to <span th:text="${myreservation.trip_id.to.city}"></span> </h4>
+            <hr style="background:black; height:3px;">
+          </div>
+
+          <div class="container">
+
+              <div class="row">
+                <div class="col-md-4">
+                    <h5>PNR Number </h5> VA<span th:text="${myreservation.id}"></span>
+                </div>
+                <div class="col-md-4 offset-md-4">
+                  <span style="font-family: 'Libre Barcode 39';font-size: 42px;" th:text="'VAMSIAIRWAYS'+${myreservation.id}"></span>
+                </div>
+              </div>
 
           </div>
 
-          <div class="row">
-            <div class="col text-left"><h4>YOUR TICKET ITINERARY</h4></div>
-            <div class="col text-right">
-              YOUR PNR NUMBER: VA<span th:text="${myreservation.id}"></span>
+
+          <div class="container">
+
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Passenger's Name</th>
+                <th>Age</th>
+                <th>Status</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td th:text="${myreservation.primary_passenger_name}"></td>
+                <td th:text="${myreservation.primary_passenger_age}"></td>
+                <td th:text="${myreservation.reservation_status}"></td>
+              </tr>
+
+              </tbody>
+            </table>
+
+
+          </div>
+
+          <div class="container">
+            <i class="fa-solid fa-plane"></i> Travel on | <span th:text="${#dates.format(myreservation.trip_id.date, 'MMM dd')}"></span>
+          </div>
+
+          <div class="container">
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Time</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Flight No.</th>
+                <th>Terminal</th>
+                <th>Airline</th>
+                <th>Class</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td th:text="${#dates.format(myreservation.trip_id.time, 'h:mm a')}"></td>
+                <td th:text="${myreservation.trip_id.from.city}"></td>
+                <td th:text="${myreservation.trip_id.to.city}"></td>
+                <td th:text="${myreservation.trip_id.flightDetails.flight_no}"></td>
+                <td></td>
+                <td th:text="${myreservation.trip_id.flightDetails.operator}"></td>
+
+                <td th:text="${myreservation.seat_class}"></td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+          <div class="container">
+
+
+
+            <h5>Trip Summary</h5>
+            <hr style="background:black;height:3px">
+
+
+            <div class="row">
+              <div class="col">
+
+                <div class="row">
+                  <div class="col">
+                    <span><b>Departure</b></span>
+                  </div>
+                  <div class="col">
+                    <span th:text="${myreservation.trip_id.from.airport_name}"></span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <span><b>Arrival</b></span>
+                  </div>
+                  <div class="col">
+                    <span th:text="${myreservation.trip_id.to.airport_name}"></span>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <span><b>Contact Number</b></span>
+                  </div>
+                  <div class="col">
+                    <span th:text="${myreservation.primary_passenger_number}"></span>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col">
+                    <span><b>Passenger Count</b></span>
+                  </div>
+                  <div class="col">
+                    <span th:text="${myreservation.passengercount}"></span>
+                  </div>
+                </div>
+
+
+
+              </div>
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <span><b>Payment Status</b></span>
+                  </div>
+                  <div class="col">
+                    <span th:text="${myreservation.payment_status}"></span>
+                  </div>
+                </div>
+
+
+
+              </div>
+
             </div>
+            <br>
           </div>
+
+
+          <div class="container">
+            <h5>Price Summary</h5>
+            <hr style="background:black; height:3px;">
+
+            <div class="row">
+              <div class="col">
+                Total Basic Fare:
+              </div>
+              <div class="col">
+                <span></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Other Charges:
+              </div>
+              <div class="col">
+                <span></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Discount:
+              </div>
+              <div class="col">
+                <span></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Insurance Fee:
+              </div>
+              <div class="col">
+                <span></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Meal Amount:
+              </div>
+              <div class="col">
+                <span></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Bagg. Amount:
+              </div>
+              <div class="col">
+                <span></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Seat Fee:
+              </div>
+              <div class="col">
+                <span></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Reschedule Charges:
+              </div>
+              <div class="col">
+                <span></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Cancellation Ins Charges:
+              </div>
+              <div class="col">
+                <span></span>
+              </div>
+            </div>
+
+
+
+          </div>
+<br>
+         <div class="container">
+           <h5>Fare Rules & Baggage</h5>
+           <hr style="background:black; height:3px;">
+
+           <ul>
+             <li>
+               Passengers are permitted to check in up to two bags, each weighing a maximum of 23 kilograms (50 pounds) per bag, adhering to airline baggage rules and regulations.
+
+             </li>
+             <li>In addition to checked baggage, travelers are entitled to carry one cabin bag onboard, subject to size and weight restrictions specified by the airline.</li>
+             <li>
+               Passengers are encouraged to familiarize themselves with the airline's baggage policies prior to travel to ensure compliance and avoid any inconvenience or additional fees related to excess baggage.
+             </li>
+
+
+           </ul>
+
+           <div class="container">
+
+             <div class="row justify-content-between">
+
+               <div class="col-4"></div>
+               <div class="col-4">
+                 <div th:if="${#strings.toString(myreservation.reservation_status) == 'CONFIRMED'}">
+                   <!-- Content to be rendered if the reservation status is CONFIRMED -->
+                   <img class="myStampImage" th:src="@{/assets/img/stamps/my_stamp.png}">
+                 </div>
+
+                 <div th:if="${#strings.toString(myreservation.reservation_status) == 'HOLD'}">
+                   <!-- Content to be rendered if the reservation status is HOLD -->
+                   <img class="myStampImage" th:src="@{/assets/img/stamps/hold_stamp.png}">
+                 </div>
+
+
+
+
+               </div></div>
+
+
+           </div>
+
+         </div>
+
+
+
+
+
+
 
         </div>
+
+        <script>
+    document.getElementById('printButton').addEventListener('click', function() {
+        // Clone the original element to avoid affecting the webpage layout
+        var element = document.getElementById('myTicketCard').cloneNode(true);
+        // Set the ID of the cloned element for PDF generation
+        element.id = 'myTicketCardPDF';
+
+        // Calculate the scaling factor based on page width
+        var scaleFactor = 1;
+        var pageWidth = 8.5 * 72; // Width of letter size paper in points
+        var contentWidth = element.offsetWidth;
+        if (contentWidth > pageWidth) {
+            scaleFactor = pageWidth / contentWidth;
+        }
+
+        // Adjust font size to fit within page width
+        var fontSize = parseFloat(window.getComputedStyle(element).fontSize);
+        element.style.fontSize = (fontSize * scaleFactor) + 'px';
+
+        // Use html2pdf to generate PDF with custom options
+        html2pdf().from(element).set({
+            margin: 0, // Set margin in inches
+            filename: 'my_ticket.pdf', // Set filename
+            pagebreak: { mode: ['letter'] }, // Set page size to letter
+            html2canvas: { scale: 1, logging: false }, // Set html2canvas options
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } // Set jsPDF options
+        }).save();
+    });
+</script>
 
 
 

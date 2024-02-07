@@ -159,8 +159,8 @@
                     console.log("Payment Successful!!!");
 
                 },
-                error: function () {
-
+                error: function (error) {
+                      console.log(error);
                     $("#errorMessage").show().text("Something went wrong. Please try again.");
                 }
             });

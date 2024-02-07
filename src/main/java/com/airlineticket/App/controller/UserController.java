@@ -4,7 +4,9 @@ package com.airlineticket.App.controller;
 import com.airlineticket.App.models.Airport;
 import com.airlineticket.App.models.User;
 import com.airlineticket.App.models.booking.Reservations;
+import com.airlineticket.App.models.booking.Transaction;
 import com.airlineticket.App.repos.ReservationsRepository;
+import com.airlineticket.App.repos.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +22,9 @@ public class UserController {
     @Autowired
     ReservationsRepository reservationsRepository;
 
+    @Autowired
+    TransactionRepository transactionRepository;
+
 
 
     @GetMapping("/profile/mytickets")
@@ -29,6 +34,8 @@ public class UserController {
 
 
         List<Reservations> myreservations = reservationsRepository.findAllByUserId(user);
+
+
 
         model.addAttribute("myreservations",myreservations);
         

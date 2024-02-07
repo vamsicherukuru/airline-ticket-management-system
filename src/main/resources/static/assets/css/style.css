@@ -140,10 +140,25 @@ width:100%;
  background:white;
  padding:20px;
 
+ border:1px dotted silver;
+ box-shadow:0px 0px 10px silver;
+margin-bottom:10px;
+
 
 }
 
 #eticket-head{
     padding:10px;
-    background-image: linear-gradient(to bottom right, white,white , silver);
+
+}
+
+
+
+.myStampImage{
+
+transform: rotate(10deg);
+height:200px;
+margin-top:-1450px;
+opacity: 0.7;
+
 }
