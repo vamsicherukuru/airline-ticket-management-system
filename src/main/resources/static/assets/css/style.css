@@ -74,7 +74,7 @@ width:100%;
 
 
 
-#flightCards {
+#flightSepCard {
   /* Set initial styles for the flightCards element */
   position: relative;
   /* Add any other styles you need for flightCards */
@@ -84,7 +84,7 @@ width:100%;
 
 }
 
-#flightCards:hover {
+#flightSepCard:hover {
   /* Apply styles to flightCardBody when flightCards is hovered */
   transform: scale(1.05); /* You can adjust the scaling factor as needed */
   box-shadow:0px 0px 10px (0,0,0,0.5);
