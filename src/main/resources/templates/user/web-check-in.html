@@ -36,28 +36,45 @@
 <!--Web Checkin Content begin-->
         <div class="container">
 
-
-          <div class="container">
-
-            <form class="form">
+            <div class="container">
+                <form class="form" id="checkin-form" >
 
 
-                <div class="row">
-                  <input class="form-control" type="text" placeholder="PNR Number">
-                </div><br>
-                <div class="row">
-                  <input class="form-control" type="text" placeholder="Last Name">
-
-                </div><br>
-                <div class="row">
-                  <button class="btn btn-success btn-lg btn-block">Check In</button>
-                </div>
+                    <input class="form-control" id="pnr_number" name="pnr_number" type="text" placeholder="PNR Number..">
+<br>
+                    <button type="submit" class="btn btn-success">CHECK IN</button>
+                </form>
 
 
 
-            </form>
+                <script>
+    $(document).ready(function() {
+        // Attach a submit event listener to the form
+        $('#checkin-form').submit(function(event) {
+            // Prevent the default form submission behavior
+            event.preventDefault();
 
-          </div>
+            // Serialize the form data
+            var formData = $(this).serialize();
+
+            // Make the AJAX request
+            $.ajax({
+                url: "/profile/checkin",
+                type: "POST",
+                data: formData, // Send form data
+                success: function(response) {
+                    console.log("Check-in successful");
+                    // You can perform further actions here upon successful check-in
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error occurred while checking in:", error);
+                    // Handle errors if any
+                }
+            });
+        });
+    });
+</script>
+            </div>
 
 
         </div>

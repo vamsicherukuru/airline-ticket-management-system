@@ -69,14 +69,14 @@ public class Reservations {
         @Column(name = "reservation_status")
         private ReservationStatus reservation_status=ReservationStatus.HOLD;
 
-
-
+        @Column(name = "BoardingPassStatus")
+        private Boolean BoardingPassStatus;
 
         @Override
         public String toString() {
                 return "Reservations{" +
                         "id=" + id +
-                        ", user_id=" + userId +
+                        ", userId=" + userId +
                         ", trip_id=" + trip_id +
                         ", passengercount=" + passengercount +
                         ", seat_class=" + seat_class +
@@ -88,6 +88,7 @@ public class Reservations {
                         ", primary_passenger_email='" + primary_passenger_email + '\'' +
                         ", payment_status=" + payment_status +
                         ", reservation_status=" + reservation_status +
+                        ", BoardingPassStatus=" + BoardingPassStatus +
                         '}';
         }
 }

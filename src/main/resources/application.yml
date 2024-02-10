@@ -13,8 +13,7 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
-      jdbc:
-        time_zone: EST
+
 
 
 
