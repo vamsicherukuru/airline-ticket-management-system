@@ -32,7 +32,7 @@ public class WebCheckinRestController {
         Reservations myreservation =reservationsRepository.getReferenceById(Integer.parseInt(pnr_number.substring(2)));
         if(myreservation.getUserId().getId()==user.getId()){
 
-            if (myreservation.getBoardingPassStatus()==true){
+            if (myreservation.getBoardingPassStatus()){
                 return "Already Generated";
             }
 
