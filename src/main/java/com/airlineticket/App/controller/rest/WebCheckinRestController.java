@@ -2,6 +2,7 @@ package com.airlineticket.App.controller.rest;
 
 
 import com.airlineticket.App.models.User;
+import com.airlineticket.App.models.booking.ReservationStatus;
 import com.airlineticket.App.models.booking.Reservations;
 import com.airlineticket.App.repos.FlightDetailsRepository;
 import com.airlineticket.App.repos.ReservationsRepository;
@@ -30,16 +31,22 @@ public class WebCheckinRestController {
         System.out.println(reservationsRepository.getReferenceById(Integer.parseInt(pnr_number.substring(2))));
 
         Reservations myreservation =reservationsRepository.getReferenceById(Integer.parseInt(pnr_number.substring(2)));
-        if(myreservation.getUserId().getId()==user.getId()){
+        if(myreservation.getUserId().getId()==user.getId() && myreservation.getReservation_status()== ReservationStatus.CONFIRMED){
+
+            if(myreservation.getBoardingPassStatus()==null){
+                myreservation.setBoardingPassStatus(false);
+            }
 
             if (myreservation.getBoardingPassStatus()){
                 return "Already Generated";
             }
 
+
             myreservation.setBoardingPassStatus(true);
             reservationsRepository.save(myreservation);
             return "Changed Boarding Pass Status";
         }else{
+
             return "Invalid PNR";
         }
 

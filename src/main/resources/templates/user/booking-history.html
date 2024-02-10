@@ -36,8 +36,24 @@
                         <h5>Trip to
                             <span th:text="${myreservation.trip_id.to.city}"></span>
                             <span>
-                                <button class="btn btn-success btn-sm" th:text="${myreservation.reservation_status}"></button>
+                                <button class="btn btn-success btn-sm disabled" th:text="${myreservation.reservation_status}"></button>
                             </span>
+
+
+                            <span th:if="${myreservation.boardingPassStatus==true}">
+                             <button class="btn btn-primary btn-sm disabled" > Web Check-in Completed</button>
+
+                            </span>
+
+
+
+
+
+
+
+
+
+
                         </h5>
                         <hr>
 
