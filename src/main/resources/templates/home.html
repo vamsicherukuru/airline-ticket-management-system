@@ -42,7 +42,7 @@ $(document).ready(function() {
         // Prevent default form submission
         event.preventDefault();
 
-
+        $('#loadingMessage').text("Fetching Flights...");
         // Show loading message
         $('#loadingMessage').show();
         console.log("loading");
@@ -122,6 +122,7 @@ $(document).ready(function() {
             },
             error: function(xhr, status, error) {
                 // Handle error response here
+                $('#loadingMessage').text("No Flights available");
                 console.error('Error:', error);
             }
         });

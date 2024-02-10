@@ -58,5 +58,11 @@ public class UserController {
 
     }
 
+    @GetMapping("/profile/checkin")
+    public String webCheckinPage(){
+
+
+        return "user/web-check-in";
+    }
 
 }
