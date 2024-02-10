@@ -17,7 +17,9 @@
 <div class="container-fluid">
   <div class="row flex-nowrap">
 
-    <div th:replace="fragments/user-navbar"></div>
+    <div th:replace="fragments/user-navbar">
+
+    </div>
 
     <div class="col py-3">
 
@@ -33,6 +35,30 @@
 
 <!--Web Checkin Content begin-->
         <div class="container">
+
+
+          <div class="container">
+
+            <form class="form">
+
+
+                <div class="row">
+                  <input class="form-control" type="text" placeholder="PNR Number">
+                </div><br>
+                <div class="row">
+                  <input class="form-control" type="text" placeholder="Last Name">
+
+                </div><br>
+                <div class="row">
+                  <button class="btn btn-success btn-lg btn-block">Check In</button>
+                </div>
+
+
+
+            </form>
+
+          </div>
+
 
         </div>
 
