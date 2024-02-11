@@ -36,8 +36,10 @@
         <button id="printButton">Print</button>
 
           <div id="eticket-head">
-            <img th:src="@{/assets/img/icons/va-1.png}" style="height:4em;">
-              Vamsi Airways
+<div style="text-align:right;">
+  <img th:src="@{/assets/img/logos/logo-3.png}" style="height:6em;">
+
+</div>
             <h4>Flight Ticket - <span th:text="${myreservation.trip_id.from.city}"></span> to <span th:text="${myreservation.trip_id.to.city}"></span> </h4>
             <hr style="background:black; height:3px;">
           </div>

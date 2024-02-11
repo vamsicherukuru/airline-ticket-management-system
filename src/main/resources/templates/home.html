@@ -58,67 +58,79 @@ $(document).ready(function() {
             type: 'GET',
             url: url,
             success: function(results) {
-
                 // Hide loading message after 2 seconds
                 setTimeout(function() {
-
                     $('#loadingMessage').hide();
                     $('#flightCards').empty();
 
+                    // Loop through each flight in the results
+                    $.each(results, function(index, result) {
+                        // Format date
+                        var dateObj = new Date(result.date);
+                        var formattedDate = dateObj.toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: '2-digit',
+                            year: 'numeric'
+                        });
 
+                        // Combine today's date with the time from result.time
+                        var today = new Date();
+                        var timeString = today.toISOString().slice(0, 10) + ' ' + result.time;
 
-                     // Loop through each flight in the results
-                $.each(results, function(index, result) {
-                    // Construct HTML for flight card
-                    var flightCardHtml = `
-                        <div id="flightSepCard" class="card" style="margin:10px;">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col text-center">
-                                        <img src="/assets/img/icons/airlines_default.png" style="height:3em;">
-                                        <div class="row">
-                                            <p>${result.date}</p>
-                                            <p>${result.time}</p>
+                        // Create a Date object with the combined date and time
+                        var timeObj = new Date(timeString);
+
+                        // Format the time
+                        var formattedTime = timeObj.toLocaleString('en-US', {
+                            hour: 'numeric',
+                            minute: 'numeric',
+                            hour12: true
+                        });
+
+                        // Construct HTML for flight card
+                        var flightCardHtml = `
+                            <div id="flightSepCard" class="card" style="margin:10px;">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <img src="/assets/img/logos/logo-portal.png" style="height:3em;">
+                                            <div class="row">
+                                                <p>${formattedDate}</p>
+                                                <p>${formattedTime}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="row">
-                                            <h2>${result.flightDetails.flight_no}</h2>
+                                        <div class="col">
+                                            <div class="row">
+                                                <h2>${result.flightDetails.flight_no}</h2>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col">
-                                        <span>
-                                            <h6>${result.from.airport_name}</h6>
-                                            <small>${result.from.airport_code}</small>
-                                        </span>
-                                    </div>
-                                    <div class="col text-center">
-                                        <i class="fa-solid fa-route"></i>
-                                    </div>
-                                    <div class="col">
-                                        <h6>${result.to.airport_name}</h6>
-                                        <small>${result.to.airport_code}</small>
-                                    </div>
-                                    <div class="col text-center">
-                                        <a href="/booking/flight/${result.id}" class="btn btn-outline-primary">Select Flight</a>
-                                    </div>
-                                    <div class="col text-center">
-                                        <i class="fa-solid fa-chevron-down"></i>
+                                        <div class="col">
+                                            <span>
+                                                <h6>${result.from.airport_name}</h6>
+                                                <small>${result.from.airport_code}</small>
+                                            </span>
+                                        </div>
+                                        <div class="col text-center">
+                                            <i class="fa-solid fa-route"></i>
+                                        </div>
+                                        <div class="col">
+                                            <h6>${result.to.airport_name}</h6>
+                                            <small>${result.to.airport_code}</small>
+                                        </div>
+                                        <div class="col text-center">
+                                            <a href="/booking/flight/${result.id}" class="btn btn-outline-primary">Select Flight</a>
+                                        </div>
+                                        <div class="col text-center">
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    `;
-                    // Append flight card HTML to #flightCards container
-                    $('#flightCards').append(flightCardHtml);
-                });
-
-
-
+                        `;
+                        // Append flight card HTML to #flightCards container
+                        $('#flightCards').append(flightCardHtml);
+                    });
                 }, 1000);
-
-
-
             },
             error: function(xhr, status, error) {
                 // Handle error response here
@@ -129,6 +141,7 @@ $(document).ready(function() {
     });
 });
 </script>
+
 
 
 </body>
