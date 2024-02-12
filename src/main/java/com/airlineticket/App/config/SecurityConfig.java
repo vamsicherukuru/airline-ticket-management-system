@@ -23,7 +23,8 @@ public class SecurityConfig {
             "/",
             "/api/users",
             "/assets/**",
-            "/search/flights/**"
+            "/search/flights/**",
+            "/reset-password/**"
 //            "/booking/**"  //should not be whitelisted
     };
 

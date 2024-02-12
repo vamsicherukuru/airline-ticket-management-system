@@ -7,6 +7,8 @@ import com.airlineticket.App.models.booking.Reservations;
 import com.airlineticket.App.repos.FlightDetailsRepository;
 import com.airlineticket.App.repos.ReservationsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +24,7 @@ public class WebCheckinRestController {
     ReservationsRepository reservationsRepository;
 
     @PostMapping("/profile/checkin")
-    public String changeBPassStatus(@RequestParam String pnr_number){
+    public ResponseEntity<String> changeBPassStatus(@RequestParam String pnr_number){
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
@@ -38,16 +40,17 @@ public class WebCheckinRestController {
             }
 
             if (myreservation.getBoardingPassStatus()){
-                return "Already Generated";
+                return new ResponseEntity<>("Already Generated", HttpStatus.BAD_REQUEST);
             }
 
 
             myreservation.setBoardingPassStatus(true);
             reservationsRepository.save(myreservation);
-            return "Changed Boarding Pass Status";
+            return new ResponseEntity<>("Web Check-IN Successful", HttpStatus.OK);
         }else{
 
-            return "Invalid PNR";
+            return new ResponseEntity<>("INVALID PNR", HttpStatus.BAD_REQUEST);
+
         }
 
 
