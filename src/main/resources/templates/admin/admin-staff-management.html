@@ -93,28 +93,94 @@
                         <th>Role</th>
                         <th>First Name</th>
                         <th>Last Name</th>
+                        <th>Account Status</th>
                         <th>Action</th>
 
                     </tr>
                     </thead>
                     <tbody>
+
                     <tr th:each="myuser:${allusers}">
                         <td th:text="${myuser.user.id}"></td>
                         <td th:text="${myuser.role.name}"></td>
                         <td th:text="${myuser.user.first_name}"></td>
                         <td th:text="${myuser.user.last_name}"></td>
-
+                        <td>
+                            <span th:text="${myuser.user.isEnabled() ? 'Enabled' : 'Disabled' }"></span>
+                            <button th:if="${myuser.user.isEnabled()}"
+                                    class="btn btn-sm btn-danger"
+                                    th:attr="data-user-id=${myuser.user.id}"
+                                    onclick="sendDisableRequest(this)">
+                                Disable
+                            </button>
+                            <button th:unless="${myuser.user.isEnabled()}"
+                                    class="btn btn-sm btn-success"
+                                    th:attr="data-user-id=${myuser.user.id}"
+                                    onclick="sendEnableRequest(this)">
+                                Enable
+                            </button>
+                        </td>
                         <td>
                             <button class="btn btn-sm btn-danger">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
-
                         </td>
                     </tr>
+
+
+
                     </tbody>
                 </table>
 
+                <script th:inline="javascript">
+   function sendDisableRequest(button) {
+        var userId = button.getAttribute('data-user-id');
 
+        $.ajax({
+            type: 'POST',
+            url: '/admin/api/disable/user/' + userId,
+            success: function(response) {
+                alert('User disabled successfully');
+                // You can perform additional actions here if needed
+
+
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                console.error('Failed to disable user');
+                console.error('Error:', error);
+            }
+        });
+    }
+
+
+
+
+
+
+    function sendEnableRequest(button) {
+        var userId = button.getAttribute('data-user-id');
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/api/enable/user/' + userId,
+            success: function(response) {
+                alert('User Enabled successfully');
+                // You can perform additional actions here if needed
+
+
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                console.error('Failed to disable user');
+                console.error('Error:', error);
+            }
+        });
+    }
+
+
+
+</script>
 
 
             </div>

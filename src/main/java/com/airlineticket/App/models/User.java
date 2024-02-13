@@ -49,6 +49,13 @@ public class User implements UserDetails {
     List<Role> roleList;
 
 
+
+
+
+    @Column(name = "enabled", nullable = false)
+    private boolean enabled=Boolean.TRUE;
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorityList = new ArrayList<>();
@@ -84,6 +91,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
     }
 }
