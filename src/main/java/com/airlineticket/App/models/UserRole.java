@@ -15,4 +15,13 @@ public class UserRole {
     private Long id;
 
     // Other fields (user, role) and getters/setters
+    // Add reference to Role
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+    // Add reference to User
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

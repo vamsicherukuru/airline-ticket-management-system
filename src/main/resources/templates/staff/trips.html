@@ -168,10 +168,9 @@ $(document).ready(function () {
                 url: $(this).attr("action"),
                 data: formData,
                 success: function () {
-                    // Handle the success response here
-                    // For example, you can show a success message or toggle a div
+
                     $("#successMessage").show();
-                    $("#errorMessage").hide(); // Hide the error message if it was previously shown
+                    $("#errorMessage").hide();
 
                     // Clear the form fields
                     $("#createTripForm").hide();

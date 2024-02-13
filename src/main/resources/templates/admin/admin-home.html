@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ADMIN || Airline Ticket Management System</title>
+    <div th:replace="fragments/header"></div>
+
+
+</head>
+<body>
+
+
+<!--<div th:replace="fragments/navbar"></div>-->
+<!--&lt;!&ndash;<div th:replace="fragments/booking-banner"></div>&ndash;&gt;-->
+
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div th:replace="fragments/admin-navbar"></div>
+        <div class="col offset-3 py-3">
+
+                <div class="container">
+
+
+                    <h4>All Bookings</h4><hr>
+
+
+                    <table class="table">
+                        <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Departure</th>
+                                    <th>Arrival</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Passenger Name</th>
+                                    <th>Action</th>
+
+                                </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="booking:${allBookings}">
+                            <td th:text="${booking.id}"></td>
+                            <td th:text="${booking.trip_id.from.city}"></td>
+                            <td th:text="${booking.trip_id.to.city}"></td>
+                            <td th:text="${booking.trip_id.date}"></td>
+                            <td th:text="${booking.trip_id.time}"></td>
+                            <td th:text="${booking.primary_passenger_name}"></td>
+
+                            <td>
+                                <button class="btn btn-sm btn-danger">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+
+
+
+                </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

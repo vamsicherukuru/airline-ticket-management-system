@@ -44,6 +44,8 @@ public class WebCheckinRestController {
             }
 
 
+
+
             myreservation.setBoardingPassStatus(true);
             reservationsRepository.save(myreservation);
             return new ResponseEntity<>("Web Check-IN Successful", HttpStatus.OK);

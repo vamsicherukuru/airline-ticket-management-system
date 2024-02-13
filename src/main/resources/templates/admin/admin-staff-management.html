@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ADMIN || Airline Ticket Management System</title>
+    <div th:replace="fragments/header"></div>
+
+    <link rel="stylesheet" th:href="@{/assets/css/admin.css}">
+
+</head>
+<body>
+
+
+<!--<div th:replace="fragments/navbar"></div>-->
+<!--&lt;!&ndash;<div th:replace="fragments/booking-banner"></div>&ndash;&gt;-->
+
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div th:replace="fragments/admin-navbar"></div>
+        <div class="col offset-3 py-3">
+
+            <div class="container ">
+
+
+                <h4>Staff-Management</h4><hr>
+
+                <button id="createMemberBtn" class="btn btn-success"><i class="fa-solid fa-user-plus"></i> Add Member</button>
+
+
+                <div class="container overlay" id="overlay">
+
+                    <h5>Add a member</h5><hr>
+
+
+                    <form th:action="@{/admin/staff-management/add/user}" method="post" class="form" id="addMemberForm">
+
+
+                            <input type="text" name="first_name" class="form-control" placeholder="First Name"><br>
+                        <input type="text" name="last_name" class="form-control" placeholder="Last Name"><br>
+                        <input type="text" name="email" class="form-control" placeholder="email"><br>
+                        <input type="text" name="password" class="form-control" placeholder="password"><br>
+                        <label>Privileges</label>
+<select name="roles" class="form-select">
+    <option value="2">FLIGHT_OPERATIONS_MANAGER</option>
+    <option value="3">ADMIN</option>
+</select>
+
+<p style="text-align:right;">
+    Copy Credentials <button class="btn" type="button"><i class="fa-regular fa-copy"></i></button>
+</p>
+
+
+                        <br>
+                        <center>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </center>
+                    </form>
+
+                    <br>
+                    <center>
+                        <button id="closeBtn" class="btn btn-outline-danger">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </center>
+
+                </div>
+
+
+<script>
+       document.getElementById('createMemberBtn').addEventListener('click', function() {
+        document.getElementById('overlay').style.display = 'block';
+        });
+
+        document.getElementById('closeBtn').addEventListener('click', function() {
+        // Clear the form fields
+        $("#createTripForm").show();
+        document.getElementById('overlay').style.display = 'none';
+        });
+
+
+</script>
+
+
+
+
+
+
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Role</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Action</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="myuser:${allusers}">
+                        <td th:text="${myuser.user.id}"></td>
+                        <td th:text="${myuser.role.name}"></td>
+                        <td th:text="${myuser.user.first_name}"></td>
+                        <td th:text="${myuser.user.last_name}"></td>
+
+                        <td>
+                            <button class="btn btn-sm btn-danger">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

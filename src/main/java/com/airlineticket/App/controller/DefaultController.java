@@ -53,10 +53,5 @@ public class DefaultController {
 
 
 
-    @GetMapping("/admin")
-    public String adminPage(){
-
-        return "home";
-    }
 
 }
