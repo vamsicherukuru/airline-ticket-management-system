@@ -2,6 +2,7 @@ package com.airlineticket.App.controller.rest;
 
 
 import com.airlineticket.App.models.User;
+import com.airlineticket.App.repos.ReservationsRepository;
 import com.airlineticket.App.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,9 @@ public class AdminRestController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    ReservationsRepository reservationsRepository;
 
     @PostMapping("/admin/api/disable/user/{userId}")
     public ResponseEntity<String> disableUser(@PathVariable Integer userId){
@@ -54,6 +58,20 @@ public class AdminRestController {
         return new ResponseEntity<>("User Enabled", HttpStatus.OK);
 
 
+
+    }
+
+
+    @PostMapping("/admin/api/delete/booking/{bookingId}")
+    public ResponseEntity<String> deleteBooking(
+            @PathVariable Integer bookingId
+    ){
+
+//        reservationsRepository.deleteById(bookingId);
+
+
+
+        return new ResponseEntity<>("Booking Deleted",HttpStatus.OK);
 
     }
 

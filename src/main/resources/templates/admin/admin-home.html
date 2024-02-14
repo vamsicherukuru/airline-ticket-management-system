@@ -33,6 +33,7 @@
                                     <th>Date</th>
                                     <th>Time</th>
                                     <th>Passenger Name</th>
+                                    <th>Reservation Status</th>
                                     <th>Action</th>
 
                                 </tr>
@@ -45,17 +46,49 @@
                             <td th:text="${booking.trip_id.date}"></td>
                             <td th:text="${booking.trip_id.time}"></td>
                             <td th:text="${booking.primary_passenger_name}"></td>
+                            <td th:text="${booking.reservation_status}"></td>
 
                             <td>
-                                <button class="btn btn-sm btn-danger">
+                                <button class="btn btn-sm btn-danger"
+                                        th:attr="data-booking-id=${booking.id}"
+                                        onclick="sendDeleteRequest(this)">
                                     <i class="fa-solid fa-xmark"></i>
                                 </button>
+
+
+
+
 
                             </td>
                         </tr>
                         </tbody>
                     </table>
+                    <script th:inline="javascript">
+    function sendDeleteRequest(button) {
+        var bookingId = button.getAttribute('data-booking-id');
 
+        // Show confirmation dialog
+        var confirmation = confirm('Are you sure you want to delete this reservation?');
+        if (confirmation) {
+            // Proceed with deletion
+            $.ajax({
+                type: 'POST',
+                url: '/admin/api/delete/booking/' + bookingId,
+                success: function(response) {
+                    alert('Reservation Deleted');
+                    // You can perform additional actions here if needed
+                    location.reload();
+                },
+                error: function(xhr, status, error) {
+                    console.error('Failed to delete reservation');
+                    console.error('Error:', error);
+                }
+            });
+        } else {
+            // User canceled deletion, do nothing
+        }
+    }
+</script>
 
 
 
